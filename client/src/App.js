@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import ReadString from "./ReadString";
 import SetString from "./SetString";
+import Header from "./Header";
+import Chart from "./Chart";
+
+
 
 class App extends Component {
   state = { loading: true, drizzleState: null };
@@ -29,16 +33,29 @@ class App extends Component {
   render() {
     if (this.state.loading) return "Loading Drizzle...";
     return (
-      <div className="App">
-        <ReadString
+      <div >
+        <Header
           drizzle={this.props.drizzle}
           drizzleState={this.state.drizzleState}
         />
-        <SetString
+        <div className="App">
+        <Chart
           drizzle={this.props.drizzle}
           drizzleState={this.state.drizzleState}
         />
+          <ReadString
+            drizzle={this.props.drizzle}
+            drizzleState={this.state.drizzleState}
+          />
+          <SetString
+            drizzle={this.props.drizzle}
+            drizzleState={this.state.drizzleState}
+          />
+          
+        
+        </div>
       </div>
+
     );
   }
 }
